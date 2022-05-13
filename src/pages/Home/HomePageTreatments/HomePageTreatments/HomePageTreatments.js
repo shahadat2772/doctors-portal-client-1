@@ -1,4 +1,5 @@
 import React from "react";
+import LowerPart from "../LowerPart/LowerPart";
 import UpperPart from "../UpperPart/UpperPart";
 
 const HomePageTreatments = () => {
@@ -12,6 +13,7 @@ const HomePageTreatments = () => {
       </h2>
       {/* Treatments */}
       <UpperPart></UpperPart>
+      <LowerPart></LowerPart>
     </div>
   );
 };
