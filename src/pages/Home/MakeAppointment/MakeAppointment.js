@@ -7,19 +7,21 @@ const MakeAppointment = () => {
       style={{
         backgroundImage: `url('https://i.ibb.co/thZvpDP/appointment.png')`,
       }}
-      class="md:flex justify-center items-center my-20 px-6 "
+      className="md:flex justify-center items-center my-20 px-6 "
     >
       <div className="flex-1">
         <img
           src="https://i.ibb.co/6Nysx9m/doctor-small.png"
-          class="mt-[-120px]"
+          className="mt-[-120px]"
           alt="DOC"
         />
       </div>
       <div className="flex-1">
         <h4 className="text-xl mb-2 text-primary">Appointment</h4>
-        <h1 class="text-4xl font-bold text-white">Make an appointment Today</h1>
-        <p class="py-6 text-white">
+        <h1 className="text-4xl font-bold text-white">
+          Make an appointment Today
+        </h1>
+        <p className="py-6 text-white">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsumis that it has a more-or-less normal distribution of

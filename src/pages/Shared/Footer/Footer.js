@@ -8,23 +8,23 @@ const Footer = () => {
         backgroundSize: `cover`,
       }}
     >
-      <footer class="footer p-10 text-base-content">
+      <footer className="footer p-10 text-base-content">
         <div>
-          <span class="footer-title">SERVICES</span>
-          <a class="link link-hover">Emergency Checkup</a>
-          <a class="link link-hover">Monthly Checkup</a>
-          <a class="link link-hover">Weekly Checkup</a>
-          <a class="link link-hover">Deep Checkup</a>
+          <span className="footer-title">SERVICES</span>
+          <a className="link link-hover">Emergency Checkup</a>
+          <a className="link link-hover">Monthly Checkup</a>
+          <a className="link link-hover">Weekly Checkup</a>
+          <a className="link link-hover">Deep Checkup</a>
         </div>
         <div>
-          <span class="footer-title">ORAL HEALTH</span>
-          <a class="link link-hover">Fluoride Treatment</a>
-          <a class="link link-hover">Cavity Filling</a>
-          <a class="link link-hover">Teath Whitening</a>
+          <span className="footer-title">ORAL HEALTH</span>
+          <a className="link link-hover">Fluoride Treatment</a>
+          <a className="link link-hover">Cavity Filling</a>
+          <a className="link link-hover">Teath Whitening</a>
         </div>
         <div>
-          <span class="footer-title">OUR ADDRESS</span>
-          <a class="link link-hover">New York - 101010 Hudson</a>
+          <span className="footer-title">OUR ADDRESS</span>
+          <a className="link link-hover">New York - 101010 Hudson</a>
         </div>
       </footer>
       <div>

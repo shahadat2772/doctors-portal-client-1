@@ -15,6 +15,7 @@ const HomeBanner = () => {
           <img
             src="https://i.ibb.co/5MWmg5w/chair.png"
             className="rounded-lg shadow-2xl"
+            alt=""
           />
         </div>
         <div className="flex-1">

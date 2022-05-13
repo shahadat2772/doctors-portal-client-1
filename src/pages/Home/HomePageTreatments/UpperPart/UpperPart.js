@@ -15,13 +15,13 @@ const UpperPart = () => {
       {treatments.map((treatment) => (
         <div
           key={treatment._id}
-          class="eachHomePageTreatment card w-[340px] md:w-[400px] h-[310] bg-base-100 shadow-xl"
+          className="eachHomePageTreatment card w-[340px] md:w-[400px] h-[310] bg-base-100 shadow-xl"
         >
-          <figure class="pt-[25px]">
-            <img src={treatment.img} alt="Shoes" class="rounded-xl" />
+          <figure className="pt-[25px]">
+            <img src={treatment.img} alt="Shoes" className="rounded-xl" />
           </figure>
-          <div class="card-body p-[28px] items-center text-center">
-            <h2 class="card-title">{treatment.treatmentName}</h2>
+          <div className="card-body p-[28px] items-center text-center">
+            <h2 className="card-title">{treatment.treatmentName}</h2>
             <p>{treatment.description}</p>
           </div>
         </div>

@@ -10,9 +10,9 @@ const StayConnected = () => {
       style={{
         backgroundImage: `url('https://i.ibb.co/thZvpDP/appointment.png')`,
       }}
-      class="hero min-h-screen"
+      className="hero min-h-screen"
     >
-      <div class="hero-content">
+      <div className="hero-content">
         <form className=" md:w-[440px] " onSubmit={handleSubmit(onSubmit)}>
           <h3 className=" text-center text-xl text-secondary">Contact Us</h3>
           <h2 className="mb-2 text-center text-white md:text-4xl text-2xl mt-2">
