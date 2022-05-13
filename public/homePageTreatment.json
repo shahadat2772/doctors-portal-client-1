@@ -1,0 +1,20 @@
+[
+  {
+    "_id": 1,
+    "treatmentName": "Fluoride Treatment",
+    "description": "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+    "img": "https://i.ibb.co/yp77F7Z/fluoride.png"
+  },
+  {
+    "_id": 2,
+    "treatmentName": "Fluoride Treatment",
+    "description": "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+    "img": "https://i.ibb.co/vYLdq0Y/cavity.png"
+  },
+  {
+    "_id": 3,
+    "treatmentName": "Fluoride Treatment",
+    "description": "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the",
+    "img": "https://i.ibb.co/n1hHxy1/whitening.png"
+  }
+]
