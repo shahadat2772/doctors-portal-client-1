@@ -82,7 +82,7 @@ const Navber = () => {
           </ul>
         </div>
         <Link to={"/home"} className="btn btn-ghost normal-case text-xl">
-          daisyUI
+          Doctors Portal
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
