@@ -12,9 +12,9 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mb-28">
       {/* Upper part */}
-      <div className="upperTestimonialPart flex items-center justify-between px-3">
+      <div className="upperTestimonialPart flex items-center justify-between px-3 ">
         <div className="">
           <h2 className="text-xl font-medium text-secondary">Testimonial</h2>
           <h1 className="text-2xl md:text-4xl mt-1">What Our Patients Says</h1>

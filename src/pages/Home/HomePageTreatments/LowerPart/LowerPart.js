@@ -3,7 +3,7 @@ import MainBtn from "../../../Shared/MainBtn/MainBtn";
 
 const LowerPart = () => {
   return (
-    <div class="hero min-h-screen md:px-16 mt-[80px]">
+    <div class="hero min-h-screen md:px-16 pb-24 mt-[80px]">
       <div class="hero-content flex-col lg:flex-row">
         <div className="flex-1">
           <img
