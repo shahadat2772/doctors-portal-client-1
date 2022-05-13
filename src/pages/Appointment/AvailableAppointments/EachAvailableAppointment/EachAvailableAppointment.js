@@ -1,13 +1,15 @@
 import React from "react";
-import MainBtn from "../../../Shared/MainBtn/MainBtn";
 
-const EachAvailableAppointment = ({ availableAppointment }) => {
+const EachAvailableAppointment = ({
+  availableAppointment,
+  setAppointmentForBook,
+}) => {
   const { treatmentName, slots, _id } = availableAppointment;
-  console.log(availableAppointment);
+
   return (
-    <div class="card w-96 bg-base-100 shadow-xl">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title text-secondary">{treatmentName}</h2>
+    <div className="card w-96 bg-base-100 shadow">
+      <div className="card-body items-center text-center">
+        <h2 className="card-title text-secondary">{treatmentName}</h2>
 
         <div>
           {slots.map((slot, index) => (
@@ -16,8 +18,15 @@ const EachAvailableAppointment = ({ availableAppointment }) => {
             </p>
           ))}
         </div>
-        <div class="card-actions block mt-auto">
-          <MainBtn>BOOK APPOINTMENT</MainBtn>
+        <div className="card-actions block mt-auto">
+          <label
+            disabled={slots.length === 0}
+            onClick={() => setAppointmentForBook(availableAppointment)}
+            htmlFor="bookingModal"
+            className="btn bg-gradient-to-r  py-0 from-secondary border-0 to-primary text-white text-sm"
+          >
+            BOOK APPOINTMENT
+          </label>
         </div>
       </div>
     </div>
