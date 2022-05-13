@@ -2,6 +2,7 @@ import React from "react";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import HomePageTreatments from "../HomePageTreatments/HomePageTreatments/HomePageTreatments";
 import Info from "../Info/Info";
+import StayConnected from "../StayConnected/StayConnected";
 import Testimonial from "../Testimonials/Testimonials/Testimonial";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <Info></Info>
       <HomePageTreatments></HomePageTreatments>
       <Testimonial></Testimonial>
+      <StayConnected></StayConnected>
     </div>
   );
 };
