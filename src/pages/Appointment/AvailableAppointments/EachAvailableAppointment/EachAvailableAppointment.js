@@ -10,14 +10,8 @@ const EachAvailableAppointment = ({
     <div className="card w-96 bg-base-100 shadow">
       <div className="card-body items-center text-center">
         <h2 className="card-title text-secondary">{treatmentName}</h2>
-
-        <div>
-          {slots.map((slot, index) => (
-            <p className="text-sm mb-0" key={index}>
-              {slot}
-            </p>
-          ))}
-        </div>
+        <div>{slots[0]}</div>
+        <div>{slots.length} SPACES AVAILABLE</div>
         <div className="card-actions block mt-auto">
           <label
             disabled={slots.length === 0}

@@ -53,7 +53,7 @@ const Navber = () => {
         {user ? (
           <button
             onClick={() => signOut(auth)}
-            class="btn btn-outline border-0"
+            className="btn btn-outline border-0"
           >
             LOGOUT
           </button>

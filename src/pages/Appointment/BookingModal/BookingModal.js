@@ -1,5 +1,9 @@
 import { format } from "date-fns";
+
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
+import { auth } from "../../../firebase.init";
 
 const BookingModal = ({
   selectedDate,
@@ -8,16 +12,56 @@ const BookingModal = ({
 }) => {
   const { treatmentName, _id, slots } = appointmentForBook;
 
+  // Getting current users info
+  const [user, loading] = useAuthState(auth);
+  const userEmail = user?.email;
+  const userName = user?.displayName;
+
+  // Handling booking button
   const handleBooking = (e) => {
     e.preventDefault();
     const date = e.target.date.value;
     const slot = e.target.slot.value;
-    const name = e.target.name.value;
+    const patientName = e.target.name.value;
     const phoneNumber = e.target.phoneNumber.value;
     const email = e.target.email.value;
 
-    console.log({ date, slot, name, phoneNumber, email, treatmentName });
-    setAppointmentForBook(null);
+    const bookedAppointment = {
+      treatmentName,
+      date,
+      slot,
+      email,
+      patientName,
+      phoneNumber,
+    };
+
+    fetch("http://localhost:5000/bookAppointment", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookedAppointment),
+    })
+      .then((res) => {
+        if (res.status === 403) {
+          setAppointmentForBook(null);
+          toast.error(
+            `You already have an appointment on ${treatmentName}, ${date}, at ${slot}`,
+            { id: "bookingUnsuccess" }
+          );
+        } else {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success(
+            `Appointment booked successfully,on ${treatmentName}, ${date}, at ${slot}`
+          );
+          setAppointmentForBook(null);
+        }
+        setAppointmentForBook(null);
+      });
   };
 
   return (
@@ -50,6 +94,15 @@ const BookingModal = ({
               ))}
             </select>
             <input
+              disabled
+              value={userEmail}
+              name="email"
+              placeholder="Email"
+              className="w-full border h-[48px] rounded-lg mb-[23px] p-2"
+            />
+            <input
+              disabled
+              value={userName}
               name="name"
               placeholder="Name"
               className="w-full border h-[48px] rounded-lg mb-[23px] p-2"
@@ -59,11 +112,7 @@ const BookingModal = ({
               placeholder="Phone Number"
               className="w-full border h-[48px] rounded-lg mb-[23px] p-2"
             />
-            <input
-              name="email"
-              placeholder="Email"
-              className="w-full border h-[48px] rounded-lg mb-[23px] p-2"
-            />
+
             <input
               className="w-full border h-[48px] rounded-lg  bg-accent text-white"
               type="submit"
