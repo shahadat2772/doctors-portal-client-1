@@ -52,7 +52,10 @@ const Navber = () => {
       <li>
         {user ? (
           <button
-            onClick={() => signOut(auth)}
+            onClick={() => {
+              window.localStorage.removeItem("accessToken");
+              signOut(auth);
+            }}
             className="btn btn-outline border-0"
           >
             LOGOUT

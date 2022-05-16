@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,8 +8,12 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
+  // Navigator
+  const navigate = useNavigate();
+
   // Form hook
   const {
     register,
@@ -28,6 +32,10 @@ const Register = () => {
   // Hook to sign in with google
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+  // Getting token
+
+  const [token] = useToken(user || gUser);
+
   let errorElement;
 
   if (loading || updating || gLoading) {
@@ -40,6 +48,10 @@ const Register = () => {
         {error?.message || updateError?.message || gError?.message}
       </p>
     );
+  }
+
+  if (token) {
+    navigate("/home");
   }
 
   const onSubmit = async (data) => {
