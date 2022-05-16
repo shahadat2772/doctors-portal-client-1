@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Appointment from "./pages/Appointment/Appointment/Appointment";
 import Home from "./pages/Home/Home/Home";
+import Login from "./pages/Login/Login/Login";
 import Register from "./pages/Login/Register/Register";
 import Footer from "./pages/Shared/Footer/Footer";
 import Navber from "./pages/Shared/Navber/Navber";
@@ -17,7 +18,8 @@ function App() {
           path="/appointment"
           element={<Appointment></Appointment>}
         ></Route>
-        <Route path="/login" element={<Register></Register>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
 
       <Footer></Footer>

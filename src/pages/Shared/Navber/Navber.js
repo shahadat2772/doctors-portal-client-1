@@ -1,7 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase.init";
+import { signOut } from "firebase/auth";
 
 const Navber = () => {
+  const [user, loading] = useAuthState(auth);
+
   const menuItems = (
     <>
       <li>
@@ -45,12 +50,23 @@ const Navber = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className={({ isActive }) => (isActive ? "bg-accent text-white" : "")}
-          to={"/login"}
-        >
-          Login
-        </NavLink>
+        {user ? (
+          <button
+            onClick={() => signOut(auth)}
+            class="btn btn-outline border-0"
+          >
+            LOGOUT
+          </button>
+        ) : (
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "bg-accent text-white" : ""
+            }
+            to={"/login"}
+          >
+            Login
+          </NavLink>
+        )}
       </li>
     </>
   );
