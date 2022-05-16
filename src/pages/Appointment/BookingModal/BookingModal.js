@@ -9,6 +9,7 @@ const BookingModal = ({
   selectedDate,
   appointmentForBook,
   setAppointmentForBook,
+  refetch,
 }) => {
   const { treatmentName, _id, slots } = appointmentForBook;
 
@@ -44,6 +45,7 @@ const BookingModal = ({
     })
       .then((res) => {
         if (res.status === 403) {
+          refetch();
           setAppointmentForBook(null);
           toast.error(
             `You already have an appointment on ${treatmentName}, ${date}, at ${slot}`,
@@ -55,11 +57,13 @@ const BookingModal = ({
       })
       .then((data) => {
         if (data.insertedId) {
+          refetch();
+          setAppointmentForBook(null);
           toast.success(
             `Appointment booked successfully,on ${treatmentName}, ${date}, at ${slot}`
           );
-          setAppointmentForBook(null);
         }
+        refetch();
         setAppointmentForBook(null);
       });
   };
