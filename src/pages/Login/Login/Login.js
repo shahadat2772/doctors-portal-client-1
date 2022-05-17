@@ -4,11 +4,17 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
+  // Getting location
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/home";
+
   // Navigator
   const navigate = useNavigate();
 
@@ -26,6 +32,8 @@ const Login = () => {
   // Hook to sign in with google
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+  const [token] = useToken(user || gUser);
+
   let errorElement;
 
   if (loading || gLoading) {
@@ -40,8 +48,8 @@ const Login = () => {
     );
   }
 
-  if (user || gUser) {
-    navigate("/home");
+  if (token) {
+    navigate(from);
   }
 
   const onSubmit = async (data) => {
