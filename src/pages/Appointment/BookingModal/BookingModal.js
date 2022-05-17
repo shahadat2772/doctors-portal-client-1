@@ -56,7 +56,7 @@ const BookingModal = ({
         }
       })
       .then((data) => {
-        if (data.insertedId) {
+        if (data?.insertedId) {
           refetch();
           setAppointmentForBook(null);
           toast.success(

@@ -22,7 +22,6 @@ const MyAppointments = () => {
           authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
         },
       }).then((res) => {
-        console.log(res.status);
         if (res.status === 403 || res.status === 401) {
           window.localStorage.removeItem("accessToken");
           signOut(auth);
