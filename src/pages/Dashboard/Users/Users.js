@@ -44,7 +44,12 @@ const Users = () => {
       body: JSON.stringify({ email }),
     })
       .then((res) => res.json())
-      .then((data) => {});
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          refetch();
+        }
+      });
   };
 
   if (isLoading) {
