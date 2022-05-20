@@ -43,7 +43,15 @@ const Users = () => {
       },
       body: JSON.stringify({ email }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          navigate("/login");
+          signOut(auth);
+          return;
+        } else {
+          return res.json();
+        }
+      })
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
@@ -79,7 +87,7 @@ const Users = () => {
                   <th>{index + 1}</th>
                   <td>{user?.email}</td>
                   <td>
-                    {admin && !user.admin && (
+                    {admin && !user.role && (
                       <button
                         onClick={() => makeAdmin(user.email)}
                         class="btn btn-xs"
