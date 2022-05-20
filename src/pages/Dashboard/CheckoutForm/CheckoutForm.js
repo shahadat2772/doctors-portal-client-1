@@ -7,9 +7,9 @@ const CheckoutForm = ({ appointment }) => {
 
   const stripe = useStripe();
   const elements = useElements();
-
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     if (price) {
@@ -69,6 +69,32 @@ const CheckoutForm = ({ appointment }) => {
       setCardError(intentErr.message);
     } else {
       console.log(paymentIntent);
+
+      const paymentInfo = {
+        appointmentId: appointment?._id,
+        transactionId: paymentIntent?.id,
+      };
+
+      if (paymentIntent) {
+        fetch("http://localhost:5000/payment", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${window.localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+          body: JSON.stringify(paymentInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount) {
+              setCardError("");
+              setSuccess("Congrats, We have received your payment");
+            }
+          });
+      }
     }
   };
 
@@ -99,6 +125,8 @@ const CheckoutForm = ({ appointment }) => {
           Pay
         </button>
       </form>
+      {cardError && <p className="text-red-500 text-sm mt-2">{cardError}</p>}
+      {success && <p className="text-green-500 text-sm mt-2">{success}</p>}
     </div>
   );
 };

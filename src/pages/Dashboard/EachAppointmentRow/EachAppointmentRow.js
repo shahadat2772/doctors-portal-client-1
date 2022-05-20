@@ -11,21 +11,25 @@ const EachAppointmentRow = ({ appointment, index }) => {
       <td>{treatmentName}</td>
       <td>{slot}</td>
       <td>
+        {appointment.paid ? (
+          <></>
+        ) : (
+          <>
+            <button className="btn text-white btn-xs btn-secondary">
+              <Link to={`payment/${_id}`}>PAY</Link>
+            </button>
+          </>
+        )}
         {appointment?.paid && (
           <div>
             <p className="text-green-500 text-sm">PAID</p>
-            <p>
+            <p className="text-green-500">
               Transaction id:{" "}
-              <span className="text-green-500 text-sm">
+              <span className="text-orange-500">
                 {appointment.transactionId}
               </span>
             </p>
           </div>
-        )}
-        {appointment?.paid || (
-          <button className="btn btn-xs btn-secondary">
-            <Link to={`payment/${_id}`}>PAY</Link>
-          </button>
         )}
       </td>
     </tr>

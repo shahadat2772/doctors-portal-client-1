@@ -69,8 +69,8 @@ const Users = () => {
       <h2 className="text-2xl">Users {users?.length}</h2>
 
       <div className="usersContainer mt-4">
-        <div class="overflow-x-auto">
-          <table class="table w-full">
+        <div className="overflow-x-auto">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>
@@ -90,14 +90,14 @@ const Users = () => {
                     {admin && !user.role && (
                       <button
                         onClick={() => makeAdmin(user.email)}
-                        class="btn btn-xs"
+                        className="btn btn-xs"
                       >
                         MAKE ADMIN
                       </button>
                     )}
                   </td>
                   <td>
-                    <button class="btn btn-xs">REMOVE USER</button>
+                    <button className="btn btn-xs">REMOVE USER</button>
                   </td>
                 </tr>
               ))}

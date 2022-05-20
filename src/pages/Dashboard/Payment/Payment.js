@@ -31,10 +31,10 @@ const Payment = () => {
 
   return (
     <div>
-      <div class="hero min-h-screen">
-        <div class="hero-content flex-col ">
-          <div class="card md:w-[460px] bg-base-100 shadow-xl">
-            <div class="card-body">
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col ">
+          <div className="card md:w-[460px] bg-base-100 shadow-xl">
+            <div className="card-body">
               <p className="text-secondary">Hello, {patientName}</p>
               <p className="card-title">Please pay for, {treatmentName}</p>
               <p>
@@ -42,8 +42,8 @@ const Payment = () => {
               </p>
             </div>
           </div>
-          <div class="card md:w-[460px] bg-base-100 shadow-xl">
-            <div class="card-body">
+          <div className="card md:w-[460px] bg-base-100 shadow-xl">
+            <div className="card-body">
               <Elements stripe={stripePromise}>
                 <CheckoutForm appointment={appointment} />
               </Elements>
