@@ -4,7 +4,7 @@ const EachAvailableAppointment = ({
   availableAppointment,
   setAppointmentForBook,
 }) => {
-  const { treatmentName, slots, _id } = availableAppointment;
+  const { treatmentName, slots, _id, price } = availableAppointment;
 
   return (
     <div className="card w-96 bg-base-100 shadow">
@@ -12,6 +12,7 @@ const EachAvailableAppointment = ({
         <h2 className="card-title text-secondary">{treatmentName}</h2>
         <div>{slots[0]}</div>
         <div>{slots.length} SPACES AVAILABLE</div>
+        <div>at ${price}</div>
         <div className="card-actions block mt-auto">
           <label
             disabled={slots.length === 0}

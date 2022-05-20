@@ -11,7 +11,7 @@ const BookingModal = ({
   setAppointmentForBook,
   refetch,
 }) => {
-  const { treatmentName, _id, slots } = appointmentForBook;
+  const { treatmentName, _id, slots, price } = appointmentForBook;
 
   // Getting current users info
   const [user, loading] = useAuthState(auth);
@@ -34,6 +34,7 @@ const BookingModal = ({
       email,
       patientName,
       phoneNumber,
+      price,
     };
 
     fetch("http://localhost:5000/bookAppointment", {

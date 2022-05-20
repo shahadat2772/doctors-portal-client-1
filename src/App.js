@@ -4,6 +4,7 @@ import "./App.css";
 import Appointment from "./pages/Appointment/Appointment/Appointment";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import MyAppointments from "./pages/Dashboard/MyAppointments/MyAppointments";
+import Payment from "./pages/Dashboard/Payment/Payment";
 import Users from "./pages/Dashboard/Users/Users";
 import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Login/Login/Login";
@@ -41,6 +42,13 @@ function App() {
             path="myAppointments"
             element={<MyAppointments></MyAppointments>}
           ></Route>
+
+          <Route
+            index
+            path="/dashboard/myAppointments/payment/:id"
+            element={<Payment></Payment>}
+          ></Route>
+
           <Route
             path="users"
             element={
