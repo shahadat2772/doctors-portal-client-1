@@ -32,16 +32,16 @@ const Dashboard = () => {
         <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <Link to={"myAppointments"}>My Appointments</Link>
-            <Link to={"myAppointments"}>Reviews</Link>
+            <Link to={"/dashboard/myAppointments"}>My Appointments</Link>
+            <Link to={"/dashboard/myAppointments"}>Reviews</Link>
           </li>
           {admin && (
             <>
               <li>
-                <Link to={"users"}>Users</Link>
+                <Link to={"/dashboard/users"}>Users</Link>
               </li>
               <li>
-                <Link to={"addDoctor"}>Add Doctor</Link>
+                <Link to={"/dashboard/addDoctor"}>Add Doctor</Link>
               </li>
               <li>
                 <Link to={"/dashboard/manageDoctors"}>Manage Doctor</Link>

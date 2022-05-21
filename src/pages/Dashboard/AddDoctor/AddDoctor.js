@@ -145,8 +145,8 @@ const AddDoctor = () => {
                     {...register("specialty")}
                     className="input input-bordered w-full"
                   >
-                    {services?.map((service) => (
-                      <option value={service.treatmentName}>
+                    {services?.map((service, index) => (
+                      <option key={index} value={service.treatmentName}>
                         {service.treatmentName}
                       </option>
                     ))}

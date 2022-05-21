@@ -18,11 +18,11 @@ const useAdmin = (user) => {
       })
         .then((res) => res.json())
         .then((data) => {
+          setAdminLoading(false);
           if (data.admin) {
             setAdmin(true);
             setAdminLoading(false);
           }
-          setAdminLoading(false);
         });
     }
   }, [user]);
