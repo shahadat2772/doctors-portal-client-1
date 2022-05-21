@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Appointment from "./pages/Appointment/Appointment/Appointment";
+import AddDoctor from "./pages/Dashboard/AddDoctor/AddDoctor";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import MyAppointments from "./pages/Dashboard/MyAppointments/MyAppointments";
 import Payment from "./pages/Dashboard/Payment/Payment";
@@ -47,6 +48,12 @@ function App() {
             index
             path="/dashboard/myAppointments/payment/:id"
             element={<Payment></Payment>}
+          ></Route>
+
+          <Route
+            index
+            path="addDoctor"
+            element={<AddDoctor></AddDoctor>}
           ></Route>
 
           <Route
