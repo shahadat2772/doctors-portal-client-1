@@ -33,6 +33,7 @@ const Dashboard = () => {
           {/* <!-- Sidebar content here --> */}
           <li>
             <Link to={"myAppointments"}>My Appointments</Link>
+            <Link to={"myAppointments"}>Reviews</Link>
           </li>
           {admin && (
             <>

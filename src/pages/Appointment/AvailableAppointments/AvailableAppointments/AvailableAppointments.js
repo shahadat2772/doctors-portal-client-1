@@ -3,29 +3,45 @@ import React, { useEffect, useState } from "react";
 import BookingModal from "../../BookingModal/BookingModal";
 import EachAvailableAppointment from "../EachAvailableAppointment/EachAvailableAppointment";
 import { useQuery } from "react-query";
+import Loading from "../../../Shared/Loading/Loading";
 
 const AvailableAppointments = ({ dateState }) => {
   const [selectedDate, setSelectedDate] = dateState;
+
+  // console.log(selectedDate);
 
   // const [availableAppointments, setAvailableAppointments] = useState([]);
 
   const [appointmentForBook, setAppointmentForBook] = useState(null);
 
-  const formattedDate = format(selectedDate, "PP");
-
   // useEffect(() => {
-
+  //   console.log(selectedDate);
+  //   const formattedDate = format(selectedDate, "PP");
+  //   if (formattedDate) {
+  //     fetch(`http://localhost:5000/availableServices?date=${formattedDate}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         setAvailableAppointments(data);
+  //       });
+  //   }
   // }, [selectedDate]);
+
+  const formattedDate = format(selectedDate, "PP");
 
   const {
     data: availableAppointments,
     isLoading,
     refetch,
-  } = useQuery(["availableServices", selectedDate], () =>
+  } = useQuery(["availableServices", selectedDate, formattedDate], () =>
     fetch(`http://localhost:5000/availableServices?date=${formattedDate}`).then(
       (res) => res.json()
     )
   );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="my-24">

@@ -1,9 +1,15 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useNavigation } from "react-day-picker";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import EachDoctorRow from "../EachDoctorRow/EachDoctorRow";
 
 const ManageDoctor = () => {
+  const navigate = useNavigate();
+
   const {
     data: doctors,
     isLoading,
@@ -13,7 +19,16 @@ const ManageDoctor = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => res.json())
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        window.localStorage.removeItem("accessToken");
+        navigate("/login");
+
+        return;
+      }
+      return res.json();
+    })
   );
 
   if (isLoading) {

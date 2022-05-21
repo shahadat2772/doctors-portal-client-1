@@ -40,21 +40,22 @@ function App() {
           }
         >
           <Route
-            index
             path="/dashboard/myAppointments"
             element={<MyAppointments></MyAppointments>}
           ></Route>
 
           <Route
-            index
             path="/dashboard/myAppointments/payment/:id"
             element={<Payment></Payment>}
           ></Route>
 
           <Route
-            index
             path="/dashboard/addDoctor"
-            element={<AddDoctor></AddDoctor>}
+            element={
+              <RequireAdmin>
+                <AddDoctor></AddDoctor>
+              </RequireAdmin>
+            }
           ></Route>
 
           <Route

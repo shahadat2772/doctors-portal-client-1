@@ -9,12 +9,8 @@ const EachAvailableAppointment = ({
 
   useEffect(() => {
     fetch(`http://localhost:5000/doctor/${treatmentName}`)
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setSpecialist(data);
       });
   }, [treatmentName]);
