@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-const useAdmin = (user) => {
-  const [admin, setAdmin] = useState(false);
-  const [adminLoading, setAdminLoading] = useState(false);
+const useDoctor = (user) => {
+  const [doctor, setDoctor] = useState(false);
+  const [doctorLoading, setDoctorLoading] = useState(false);
 
   useEffect(() => {
     const currentUserEmail = user.email;
 
     if (user) {
-      setAdminLoading(true);
-      fetch("http://localhost:5000/isAdmin", {
+      setDoctorLoading(true);
+      fetch("http://localhost:5000/isDoctor", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -19,22 +19,22 @@ const useAdmin = (user) => {
       })
         .then((res) => {
           if (res.status === 404) {
-            setAdminLoading(false);
+            setDoctorLoading(false);
             return;
           }
           return res.json();
         })
         .then((data) => {
-          setAdminLoading(false);
-          if (data.role === "admin") {
-            setAdminLoading(false);
-            setAdmin(true);
+          setDoctorLoading(false);
+          if (data.role === "doctor") {
+            setDoctorLoading(false);
+            setDoctor(true);
           }
         });
     }
   }, [user]);
 
-  return [admin, adminLoading];
+  return [doctor, doctorLoading];
 };
 
-export default useAdmin;
+export default useDoctor;

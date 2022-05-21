@@ -5,6 +5,7 @@ import { auth } from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
 import Loading from "../../Shared/Loading/Loading";
 import DocDeleteModal from "../DocDeleteModal/DocDeleteModal";
+import useDoctor from "../../../hooks/useDoctor";
 
 export const docDeleteContext = createContext("docDeleteContext");
 
@@ -12,10 +13,12 @@ const Dashboard = () => {
   const [docForDelete, setDoctorDelete] = useState(null);
 
   const [user, loading] = useAuthState(auth);
-
   const [admin, adminLoading] = useAdmin(user);
+  const [doctor, doctorLoading] = useDoctor(user);
 
-  if (loading || adminLoading) {
+  console.log(doctor);
+
+  if (loading || adminLoading || doctorLoading) {
     return <Loading></Loading>;
   }
 
@@ -47,6 +50,11 @@ const Dashboard = () => {
                 <Link to={"/dashboard/manageDoctors"}>Manage Doctor</Link>
               </li>
             </>
+          )}
+          {doctor && (
+            <li>
+              <Link to={"/dashboard"}>Meetings</Link>
+            </li>
           )}
         </ul>
       </div>

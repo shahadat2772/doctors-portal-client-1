@@ -7,6 +7,8 @@ import { signOut } from "firebase/auth";
 const Navber = () => {
   const [user, loading] = useAuthState(auth);
 
+  console.log(user);
+
   const menuItems = (
     <>
       <li>
@@ -70,7 +72,7 @@ const Navber = () => {
             }}
             className="btn btn-outline border-0"
           >
-            LOGOUT
+            LOGOUT <span>{user.displayName.split(" ")[0].slice(0, 3)}</span>
           </button>
         ) : (
           <NavLink
