@@ -4,6 +4,7 @@ import "./App.css";
 import Appointment from "./pages/Appointment/Appointment/Appointment";
 import AddDoctor from "./pages/Dashboard/AddDoctor/AddDoctor";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import ManageDoctor from "./pages/Dashboard/ManageDoctor/ManageDoctor";
 import MyAppointments from "./pages/Dashboard/MyAppointments/MyAppointments";
 import Payment from "./pages/Dashboard/Payment/Payment";
 import Users from "./pages/Dashboard/Users/Users";
@@ -40,7 +41,7 @@ function App() {
         >
           <Route
             index
-            path="myAppointments"
+            path="/dashboard/myAppointments"
             element={<MyAppointments></MyAppointments>}
           ></Route>
 
@@ -52,15 +53,24 @@ function App() {
 
           <Route
             index
-            path="addDoctor"
+            path="/dashboard/addDoctor"
             element={<AddDoctor></AddDoctor>}
           ></Route>
 
           <Route
-            path="users"
+            path="/dashboard/users"
             element={
               <RequireAdmin>
                 <Users></Users>
+              </RequireAdmin>
+            }
+          ></Route>
+
+          <Route
+            path="/dashboard/manageDoctors"
+            element={
+              <RequireAdmin>
+                <ManageDoctor></ManageDoctor>
               </RequireAdmin>
             }
           ></Route>

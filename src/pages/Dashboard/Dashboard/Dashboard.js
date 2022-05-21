@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
 import Loading from "../../Shared/Loading/Loading";
+import DocDeleteModal from "../DocDeleteModal/DocDeleteModal";
+
+export const docDeleteContext = createContext("docDeleteContext");
 
 const Dashboard = () => {
+  const [docForDelete, setDoctorDelete] = useState(null);
+
   const [user, loading] = useAuthState(auth);
 
   const [admin, adminLoading] = useAdmin(user);
@@ -18,7 +23,9 @@ const Dashboard = () => {
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
-        <Outlet></Outlet>
+        <docDeleteContext.Provider value={{ docForDelete, setDoctorDelete }}>
+          <Outlet></Outlet>
+        </docDeleteContext.Provider>
       </div>
       <div className="drawer-side">
         <label htmlFor="side-drawer" className="drawer-overlay"></label>
@@ -36,12 +43,19 @@ const Dashboard = () => {
                 <Link to={"addDoctor"}>Add Doctor</Link>
               </li>
               <li>
-                <Link to={"users"}>Manage Doctor</Link>
+                <Link to={"/dashboard/manageDoctors"}>Manage Doctor</Link>
               </li>
             </>
           )}
         </ul>
       </div>
+      {docForDelete && (
+        <DocDeleteModal
+          setDoctorDelete={setDoctorDelete}
+          docForDelete={docForDelete.doctor}
+          refetch={docForDelete.refetch}
+        ></DocDeleteModal>
+      )}
     </div>
   );
 };

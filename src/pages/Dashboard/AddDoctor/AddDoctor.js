@@ -143,7 +143,7 @@ const AddDoctor = () => {
                   </label>
                   <select
                     {...register("specialty")}
-                    class="input input-bordered w-full"
+                    className="input input-bordered w-full"
                   >
                     {services?.map((service) => (
                       <option value={service.treatmentName}>
