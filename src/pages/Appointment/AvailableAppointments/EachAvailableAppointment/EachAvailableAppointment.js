@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 const EachAvailableAppointment = ({
   availableAppointment,
   setAppointmentForBook,
 }) => {
+  const [specialist, setSpecialist] = useState({});
   const { treatmentName, slots, _id, price } = availableAppointment;
 
-  const { data: specialist, isLoading } = useQuery(
-    ["specialist", treatmentName],
-    () =>
-      fetch(`http://localhost:5000/doctor/${treatmentName}`).then((res) =>
-        res.json()
-      )
-  );
+  useEffect(() => {
+    fetch(`http://localhost:5000/doctor/${treatmentName}`)
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setSpecialist(data);
+      });
+  }, [treatmentName]);
 
-  console.log(specialist);
+  // console.log(specialist);
 
   return (
     <div className="card w-96 bg-base-100 shadow">
       <div className="card-body items-center text-center">
         <h2 className="card-title text-secondary">{treatmentName}</h2>
-        {specialist && <h2 className="">Doc, {specialist.name}</h2>}
+        {specialist?.name && <h2 className="">Doc, {specialist.name}</h2>}
         <div>{slots[0]}</div>
         <div>{slots.length} SPACES AVAILABLE</div>
         <div>at ${price}</div>
